@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping
+PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.test.bean.Book" table="book">
+		
+		<id name="bookid" column="bookid" type="int">
+			<generator class="increment"> <!--  主键id的生成方式为自增  -->
+			</generator>
+		</id>
+		
+		<property name="bookname" column="bookname" type="string"></property>
+		<property name="bookauthor" column="bookauthor" type="string"></property>
+		<property name="booklove" column="booklove" type="int"></property>
+	</class>
+
+</hibernate-mapping>
+

@@ -1,0 +1,105 @@
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 常量的设定  -->
+	
+	<constant name="struts.i18n.encoding" value="utf-8"/>
+	<constant name="struts.custom.i18n.resources" value="globalMessages"/>
+	
+	<package name="default" extends="struts-default">
+	
+	<interceptors>
+	 <interceptor name="uerlogininterceptor" class="com.test.interceptor">
+	</interceptor>
+	</interceptors>
+ 
+	<!-- User -->
+		<action name="checkUser" class="checkUserAction" method="loginCheck">
+    		<result name="success" >/userControl.jsp</result>
+    		<result name="fail">/userlogin.jsp</result>
+    		<interceptor-ref name="defaultStack"></interceptor-ref>
+    		</action>
+    		
+    		<action name="saveUser" class="saveUserAction">
+    			<result name="success">/userlogin.jsp</result>
+    			<result name="input" >/save.jsp</result>
+    		</action>
+    		
+    		<action name="listUser" class="listUserAction">
+    			<result name="success" >/listuser.jsp</result>
+    		</action>
+    		
+    		<action name="deleteUser" class="removeUserAction">
+    			<result name="success" type="redirect">listUser.action</result>
+    		</action>
+    		
+    		<action name="updatePUser" class="updatePUserAction">
+    			<result name="success">/update.jsp</result>
+    		</action>
+    		
+    		<action name="updateUser" class="updateUserAction">
+    			<result name="success" type="redirect">listUser.action</result>
+    		</action>
+    		
+   <!-- book   -->
+   
+   
+   <action name="saveBook" class="saveBookAction">
+    			<result name="success" type="redirect">listBook.action</result>
+    			</action>
+    			
+		<action name="listBook" class="listBookAction">
+    			<result name="success">/listbook.jsp</result>
+    			<result name="input">/adminBookMange.jsp</result>
+    			</action>
+    		
+    	 	<action name="listBookuser" class="listBookUserAction">
+    			<result name="success">/listbookuser.jsp</result>
+    			</action>
+    			
+    	<action name="deleteBook" class="removeBookAction">
+    		<result name="success" type="redirect">listBook.action</result>
+    		</action>
+    		
+    		<action name="updatePBook" class="updatePBookAction">
+    			<result name="success" >/BookUpdate.jsp</result>
+    		</action>
+    		
+    		<action name="updateBook" class="updateBookAction">
+    			<result name="success" type="redirect">listBook.action</result>
+    			</action>
+    			
+    	<!-- Order -->
+    			<action name="listOrder" class="listOrderAction">
+    			<result name="success" >/listorder.jsp</result>
+    			</action>
+    			 <action name="listbyidOrder" class="listOrderByIdAction">
+    			<result name="success" >/listorder.jsp</result>
+    			</action>
+    			<action name="removeOrder" class="RemoveOrderAction">
+    			<result name="success" type="redirect">listOrder.action</result>
+    			</action>		
+    			<action name="saveOrder" class="SaveOrderAction">
+    			<result name="success" type="redirect" >listbyidOrder.action</result>
+    			<result name="input" type="redirect" >listBookuser.action</result>
+    			</action>
+    			
+    	<!-- Admin -->
+    	
+    	    <action name="checkAdmin" class="CheckAdminAction" method="loginCheck">
+    		<result name="success" >/adminControl.jsp</result>
+    		<result name="fail">/adminlogin.jsp</result>
+    		</action>
+    		<action name="saveAdmin" class="SaveAdminAction">
+    			<result name="success" >/listorder.jsp</result>
+    			</action>
+    			<action name="updateAdmin" class="UpdateAdminAction">
+    			<result name="success" >/listorder.jsp</result>
+    			</action>
+    	
+	</package>
+</struts>
+
+
